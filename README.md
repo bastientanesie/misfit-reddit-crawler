@@ -25,6 +25,12 @@ Collect AARs data to `data.json` (defaults to all):
 npm run aar [hour|day|week|month|year|all]
 ```
 
+To sort AARs data once collected:
+
+```shell
+npm run sort-aar
+```
+
 ## Discord-Reddit mapping
 
 The `discord-mapping.json` file is used to map Reddit usernames to Discord accounts. For instance:
