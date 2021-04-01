@@ -1,0 +1,16 @@
+{
+  "name": "misfit-reddit-crawler",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "aar": "node index.js -aar",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bastien Tanésie",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "snoowrap": "^1.22.0"
+  }
+}
