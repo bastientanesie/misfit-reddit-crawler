@@ -1,5 +1,919 @@
 {
     "processedAARCommentIds": [],
-    "excludedRedditIds": [],
-    "users": []
+    "excludedRedditIds": [
+        "[deleted]",
+        "Traaseth"
+    ],
+    "unknownPlayers": [
+        "Xenthis",
+        "callsign Airwolf",
+        "callsign Blue Thunder",
+        "callsign Szarik",
+        "Felipe",
+        "LordReginold",
+        "xenthis",
+        "M. Joseph",
+        "Trapper",
+        "L0cke",
+        "LeoSmileyFace",
+        "Ayouki Kida",
+        "supabop",
+        "Yarpen",
+        "Ya Boi Bear",
+        "Wokelax",
+        "AmO",
+        "Bear",
+        "2ic",
+        "Wladyslaw Sikorski",
+        "Nep",
+        "Shanikan",
+        "Headhunter",
+        "LG_faceytop",
+        "Kaizer",
+        "Oifis",
+        "Manolito",
+        "Frosty",
+        "SerGunbot",
+        "Kaasmandje",
+        "IGN",
+        "IronLordShado",
+        "ER1K",
+        "l4rs88",
+        "BornServivor99",
+        "Kacpi",
+        "Władysław Sikorski",
+        "Shannikan",
+        "Jan voca"
+    ],
+    "users": [
+        {
+            "discordId": "SaltyR#0117",
+            "redditId": "ARogueTeddyBear",
+            "aliases": [
+                "Salty",
+                "SaltyR"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "klausman#6789",
+            "redditId": "NamSualk",
+            "aliases": [
+                "Klausman"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Spamduck#8486",
+            "redditId": "The_Spamduck",
+            "aliases": [
+                "Spamduck",
+                "Spam",
+                "Duck",
+                "Blanketduck",
+                "Canard"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "HaydenVIII#5308",
+            "redditId": "HaydenTheVIII",
+            "aliases": [
+                "HaydenVIII",
+                "Scarecrow",
+                "Hayden"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Maevis#6421",
+            "redditId": "MaevisFR",
+            "aliases": [
+                "MaevisFR",
+                "Maevis",
+                "MeavisFR",
+                "Meavis"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Embrodak#5829",
+            "redditId": "Embrodak1",
+            "aliases": [
+                "Embrodak",
+                "Embro"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "darthaethous#8530",
+            "redditId": "thecanadianflu",
+            "aliases": [
+                "Darthaethous",
+                "Darth"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Hiereus#3747",
+            "redditId": "bagogoodies111",
+            "aliases": [
+                "SoL52",
+                "bagogoodies",
+                "SoL"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Ierdyr#9817",
+            "redditId": "Delicious_Ad_6590",
+            "aliases": [
+                "Lauri"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "MichaelThomas#2850",
+            "redditId": "Venmen7",
+            "aliases": [
+                "Michael",
+                "mikeyt",
+                "Micheal"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "LordPhil#3297",
+            "redditId": "LORDPHIL",
+            "aliases": [
+                "LordPhil",
+                "Lord Phil",
+                "Phil",
+                "LordPhi"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "By-Tor#4217",
+            "redditId": "Alphabravo245",
+            "aliases": [
+                "Bytor"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Jonathan#0136",
+            "redditId": "iczesmv",
+            "aliases": [
+                "Jonathan",
+                "Johnathan",
+                "Jonahtan",
+                "Johnathon",
+                "Jonathon"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Kiwi#1978",
+            "redditId": "FruitBirdKiwi",
+            "aliases": [
+                "Kiwi"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "MrPvTDagger#4176",
+            "redditId": "MrPvTDagger",
+            "aliases": [
+                "Dagger"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Libation#9320",
+            "redditId": "Aiskhulos",
+            "aliases": [
+                "Libation"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "0V3RW4TCH#2116",
+            "redditId": "OVERWATC1-1",
+            "aliases": [
+                "0V3RW4TCH",
+                "0verwatch",
+                "OV3RWATCH",
+                "OV3RW4TCH",
+                "OVERWATCH"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Pizza Man#7717",
+            "redditId": "carbombsOP",
+            "aliases": [
+                "Pizza Man",
+                "PizzaMan",
+                "Pizza"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "km0use#5343",
+            "redditId": "km0use",
+            "aliases": [
+                "km0use",
+                "Kmouse"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Oriskana#9911",
+            "redditId": "Oriskana",
+            "aliases": [
+                "Oriskana",
+                "Britshskana",
+                "Plasmaskana"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Hansel McRichoften#9400",
+            "redditId": "SmexyHansel",
+            "aliases": [
+                "Hansel",
+                "Hanse"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "redfireant3#9152",
+            "redditId": "redfireant3",
+            "aliases": [
+                "fireant",
+                "fireant3"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "SonicCZ#3102",
+            "redditId": "SonicCZ643",
+            "aliases": [
+                "SonicCZ",
+                "Sonic",
+                "SconicCZ"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "DicedPastry#5158",
+            "redditId": "Sea-Acanthocephala26",
+            "aliases": [
+                "Diced Pastry",
+                "DicedPastry",
+                "Diced"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "FreshMapleSyrup#3167",
+            "redditId": "FreshMapleSyrup",
+            "aliases": [
+                "FreshMapleSyrup",
+                "Fresh Maple Syrup",
+                "Maple",
+                "FReshMapmeSyrup"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "ShiningRayde#2444",
+            "redditId": "ShiningRayde",
+            "aliases": [
+                "ShiningRayde"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "ItsJustSmith#0735",
+            "redditId": "ItsBradman",
+            "aliases": [
+                "ItsJustSmith",
+                "Smith"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Lelldorin#9277",
+            "redditId": "LelldorinTheRaven",
+            "aliases": [
+                "Lelldorin",
+                "Lell"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Zokolar#3223",
+            "redditId": "_Zoko_",
+            "aliases": [
+                "Zokolar",
+                "Zoko"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Squire_Gareth#8470",
+            "redditId": "hazzap913",
+            "aliases": [
+                "Squire_Gareth",
+                "Squire Gareth",
+                "Squire",
+                "Gareth"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Zunderstorm#4341",
+            "redditId": "ZunderStorm",
+            "aliases": [
+                "ZunderStorm",
+                "Zunder"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Spacedrake#6839",
+            "redditId": "Spacedrake",
+            "aliases": [
+                "Spacedrake"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Piloh-Jolie-Schitt#2456",
+            "redditId": "Piloh-Jolie-Schitt",
+            "aliases": [
+                "Piloh-Jolie-Schitt",
+                "PilohJolieSchitt",
+                "Piloh Jolie Schitt",
+                "Piloh"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Syrupy M00se#2670",
+            "redditId": "Syrupy_M00se",
+            "aliases": [
+                "Syrupy_M00se",
+                "Syrupy M00se",
+                "Syrupy",
+                "M00se",
+                "Moose",
+                "Syrupy Moose"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "KJtrey#3883",
+            "redditId": "kjtrey",
+            "aliases": [
+                "kjtrey",
+                "kj"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "NyteMyre#8934",
+            "redditId": "NyteMyre",
+            "aliases": [
+                "NyteMyre",
+                "Nyte"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Lourens#3390",
+            "redditId": "NukuBu",
+            "aliases": [
+                "NukuBu",
+                "Lourens",
+                "Nuku"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "BashfulYeti#3222",
+            "redditId": "BashfulYeti",
+            "aliases": [
+                "BashfulYeti",
+                "Bashful Yeti",
+                "Yeti",
+                "bashful"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Gunsalot#3379",
+            "redditId": "Gunsalot",
+            "aliases": [
+                "Gunsalot"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Korey#6666",
+            "redditId": "thekbart",
+            "aliases": [
+                "Korey",
+                "Welshie"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Scaly.Beef#3495",
+            "redditId": "ScalyBeef",
+            "aliases": [
+                "ScalyBeef",
+                "Scaly.Beef",
+                "Scaly Beef",
+                "Scaly",
+                "Beef"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Legensassy#2794",
+            "redditId": "Legensassy",
+            "aliases": [
+                "Legensassy",
+                "Sassy"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Traaseth#1732",
+            "redditId": "E_Traaseth",
+            "aliases": [
+                "Traaseth",
+                "Traas",
+                "Traa"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "missilemagnet#0259",
+            "redditId": "strangledbyatrtlneck",
+            "aliases": [
+                "MissileMagnet",
+                "missile magnet",
+                "missile",
+                "Misslemagnet"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Bardamus#1051",
+            "redditId": "Bardamus_",
+            "aliases": [
+                "Bardamus",
+                "Bard"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "K4mpfie#1923",
+            "redditId": "Kampfie",
+            "aliases": [
+                "K4mpfie",
+                "Kampfie",
+                "🏕️🔥"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Uk_DEVIL#6666",
+            "redditId": "UkDeviltheRaven",
+            "aliases": [
+                "Uk_DEVIL",
+                "UKD",
+                "Devil",
+                "Daddy Devil",
+                "Daddy Sevil"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "ThePianoMeister#3741",
+            "redditId": "ThePianoMeister",
+            "aliases": [
+                "ThePianoMeister",
+                "TPM",
+                "Piano",
+                "The Great Bug Hunter"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "P.Howe#3156",
+            "redditId": "paul_howe",
+            "aliases": [
+                "Howe"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Cupcake4.0H6#1986",
+            "redditId": "CupcakeEternity",
+            "aliases": [
+                "CupcakeEternity",
+                "Cupcake"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Smol Ne#0989",
+            "redditId": "smol_ne",
+            "aliases": [
+                "Smol Ne",
+                "Smol"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "ɹǝp‾The_PieRat_FuckThemHedgies#8463",
+            "redditId": "Red_The_PieRat",
+            "aliases": [
+                "Red"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Gryphon#6511",
+            "redditId": "AGryphonOnReddit",
+            "aliases": [
+                "Gryphon"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Осень#3137",
+            "redditId": "Lightning662",
+            "aliases": [
+                "Blitzy",
+                "Blitz"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Krakon#5060",
+            "redditId": "krakonHUN",
+            "aliases": [
+                "Krakon"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "kunge#7683",
+            "redditId": "kungeable",
+            "aliases": [
+                "kunge",
+                "k_nge"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "FAL#3066",
+            "redditId": "FALv1",
+            "aliases": [
+                "FAL"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "johnnyhotsauce1#4291",
+            "redditId": "johnnythelip1",
+            "aliases": [
+                "Johnnyhotsauce",
+                "Johnnyhotsauce1",
+                "Johnny hot sauce",
+                "Johnny"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Lt Cuddles#2169",
+            "redditId": "Lissiette",
+            "aliases": [
+                "Lt Cuddles",
+                "Cuddles",
+                "Lt Cuddle"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Toby#5546",
+            "redditId": "scubaguy194",
+            "aliases": [
+                "Toby"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "cannibalmerk#0705",
+            "redditId": "cannibalmerk",
+            "aliases": [
+                "CannibalMerk",
+                "cannibal",
+                "CanibalMerk"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "phoenixcnc#2933",
+            "redditId": "Pheonixcnc",
+            "aliases": [
+                "Pheonixcnc",
+                "Phoenixcnc"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "starcakes#9523",
+            "redditId": "starscape678",
+            "aliases": [
+                "Starscape",
+                "Starcape678",
+                "starcakes"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Mosku#0849",
+            "redditId": "Mosku_FIN",
+            "aliases": [
+                "Mosku"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "geelik#7716",
+            "redditId": "PIC-27",
+            "aliases": [
+                "geelik"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "",
+            "redditId": "Eve_212",
+            "aliases": [
+                "Eve"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "BlueBlack#5964",
+            "redditId": "BlueBlack22",
+            "aliases": [
+                "BlueBlack",
+                "BlueBlack22",
+                "Blueback",
+                "BlackBlue"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Bombus#9418",
+            "redditId": "Keepout90",
+            "aliases": [
+                "Bombus"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Antonn#3265",
+            "redditId": "Antonee_",
+            "aliases": [
+                "Antonn",
+                "Anton"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Wizard#9372",
+            "redditId": "lamWizard",
+            "aliases": [
+                "Wizard"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Grebman#1215",
+            "redditId": "Grebman_WI",
+            "aliases": [
+                "Grebman"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Snuffles#9531",
+            "redditId": "Snuffles2k20",
+            "aliases": [
+                "Snuffles",
+                "Snuffled"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "@Benji#9498",
+            "redditId": "Ya_Boi_Skinny_P3n15",
+            "aliases": [
+                "Benji"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Dexterity+#0082",
+            "redditId": "ICameToDiddle",
+            "aliases": [
+                "Dexterity",
+                "Dexterity+",
+                "Dextertiy",
+                "Dextiritie"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "MsCyanide#1794",
+            "redditId": "MsCyanide",
+            "aliases": [
+                "Ms. Cyanide",
+                "MsCyanide",
+                "Ms.Cyanide"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },,
+        {
+            "discordId": "White_Tiger#4221",
+            "redditId": "Joe-The-Twat-Nipple",
+            "aliases": [
+                "White_Tiger",
+                "White Tiger",
+                "Ehite_Tiger"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "LordRexy#1637",
+            "redditId": "LordRexy",
+            "aliases": [
+                "LordRexy"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "OdinThor#4767",
+            "redditId": "OdinThor1",
+            "aliases": [
+                "OdinThor"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Kira569 (Izzy)#0001",
+            "redditId": "Miya_Atsumu97",
+            "aliases": [
+                "Kira"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "leosmileyface#0601",
+            "redditId": "Tenp123",
+            "aliases": [
+                "Leosmileyface"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "PajamaMuffin#0716",
+            "redditId": "PajamaMuffin",
+            "aliases": [
+                "Pajama"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Килиан#2375",
+            "redditId": "Quili_R4g3",
+            "aliases": [
+                "Quili",
+                "Quilli",
+                "Quill"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "Spud#6921",
+            "redditId": "Spud_Tacular",
+            "aliases": [
+                "Spud"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        },
+        {
+            "discordId": "DictatorDoom#0420",
+            "redditId": "DictatorDoom",
+            "aliases": [
+                "DictatorDoom",
+                "Dictatordoom"
+            ],
+            "aarCount": 0,
+            "signupCount": 0
+        }
+    ]
 }
