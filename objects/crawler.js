@@ -82,7 +82,8 @@ class Crawler {
 
         // Find every reddit posts containing the word "AAR"
         const submissions = await (await subreddit.search({
-            query: 'AAR',
+            syntax: 'lucene',
+            query: 'flair_text:AAR',
             time: timeframe,
         })).fetchAll();
 

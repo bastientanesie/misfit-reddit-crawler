@@ -52,6 +52,19 @@ If you don't have one already, [create an app on Reddit](https://www.reddit.com/
   
 Then put your app's ID and secret into the `.env` file.
 
+## Reddit search
+
+Reddit search API provides 3 different syntaxes:
+
+- `plain`: it makes a dumb search as plain-text, as its name implies
+- `lucene`: based on [Apache Lucene](https://lucene.apache.org), a powerfull search engine 
+- `cloudsearch`: based on [AWS CloudSearch](https://aws.amazon.com/cloudsearch/), an even powerfull search engine
+
+I'm using Lucene with [this old guide](https://www.reddit.com/wiki/search?v=844e4166-31a2-11e7-9668-0ab9a12c3b60) to make flair-based queries, since (almost) all of our reddit posts are correctly flaged with according flairs.
+
+For instance, looking up AARs is as simple as that: `flair_text:AAR`. It'll return every post with the "AAR" flair attached to it.  
+If you want the opposite, simply add a minus sign in front: `-flair_text:AAR` will give you every post without the "AAR" flair.
+
 ## Usefull links
 
 - [Misfit Company's Discord server](https://discord.gg/ktvBnYrWHE)
