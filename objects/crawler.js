@@ -3,8 +3,29 @@
 const snoowrap = require('snoowrap');
 const fs = require('fs');
 const path = require('path');
+const parse5 = require('parse5');
 const packageJson = require(path.join(__dirname, '..', 'package.json'));
 const User = require('./user');
+
+/**
+ * @param {Node} node
+ * @return {Node|null}
+ */
+function findTextNode(node) {
+    if (node.nodeName === '#text') {
+        return node;
+    }
+    if (node.childNodes.length < 1) {
+        return null;
+    }
+
+    for (const childNode of node.childNodes) {
+        const textNode = findTextNode(childNode);
+        if (textNode.nodeName === '#text') {
+            return textNode;
+        }
+    }
+}
 
 class Crawler {
     /**
@@ -51,7 +72,7 @@ class Crawler {
 
         /**
          *
-         * @type {{processedAARCommentIds: String[], excludedRedditIds: String[], users: User[]}}
+         * @type {{processedAARCommentIds: String[], excludedRedditIds: String[], unknownPlayers: String[], users: User[]}}
          * @private
          */
         this._data = {
@@ -59,6 +80,8 @@ class Crawler {
             processedAARCommentIds: [],
             /** Reddit usernames excluded from our data */
             excludedRedditIds: [],
+            /** Player names that doesn't match our data */
+            unknownPlayers: [],
             /** User objects with their stats */
             users: [],
         };
@@ -145,6 +168,156 @@ class Crawler {
     }
 
     /**
+     * Fetch all the Event submissions published in the given timeframe, and process them
+     * to find out signups
+     *
+     * @param {String} timeframe Available values: hour, day, week, month (default), year, all
+     * @return {Promise<number>} Numbre of AARs processed
+     */
+    async processSignups(timeframe) {
+        let processedSubmissionCount = 0;
+
+        // Makes sure the timeframe is correct
+        const allowedTimeframeValues = ['hour', 'day', 'week', 'month', 'year', 'all'];
+        if (! allowedTimeframeValues.includes(timeframe)) {
+            timeframe = 'month';
+        }
+
+        /** @type {Subreddit} */
+        const subreddit = await this._getSubreddit();
+
+        // Find every reddit posts containing the word "AAR"
+        const submissions = await (await subreddit.search({
+            syntax: 'lucene',
+            query: 'flair_text:Event',
+            time: timeframe,
+        })).fetchAll();
+
+        for (const submission of submissions) {
+            const submissionDate = new Date(submission.created * 1000);
+            this._debug(`${submission.title} (${submissionDate.toLocaleDateString()})`);
+            ++processedSubmissionCount;
+
+            if (process.env.DEBUG === 'true') {
+                // Saves the HTML code into the /logs folder
+                const permalinkParts = submission.permalink.split('/');
+                fs.writeFileSync(
+                    path.join(__dirname, '..', 'logs', `${permalinkParts[permalinkParts.length - 2]}.html`),
+                    submission.selftext_html
+                );
+            }
+
+            let slots = [];
+            const html = parse5.parseFragment(submission.selftext_html);
+            for (const rootNode of html.childNodes) {
+                // Skips comments and the like
+                if (! rootNode.hasOwnProperty('tagName')) {
+                    continue;
+                }
+                // If we have slots, this means we can end the loop at this point
+                if (slots.length > 0) {
+                    continue;
+                }
+
+                // Finds all <tr> elements of the signup table (hopefully skipping other tables)
+                const rowElements = rootNode.childNodes.filter((node) => {
+                    // Excludes every element that is not a <table>
+                    if (! node.hasOwnProperty('tagName')) {
+                        return false;
+                    }
+                    return node.nodeName === 'table';
+                }).reduce((result, table) => {
+                    const rows = [];
+
+                    // Returns a map of all <tr> found in each <table>
+                    for (const node of table.childNodes) {
+                        // It can be a single <tr>, or
+                        // a <tbody> containing multiple <tr>
+                        if (! node.hasOwnProperty('tagName')) {
+                            continue;
+                        }
+                        if (node.nodeName === 'tr') {
+                            rows.push(node);
+                            continue;
+                        }
+                        if (node.nodeName === 'tbody') {
+                            for (const childNode of node.childNodes) {
+                                if (! node.hasOwnProperty('tagName')) {
+                                    continue;
+                                }
+                                if (childNode.nodeName === 'tr') {
+                                    rows.push(childNode);
+                                }
+                            }
+                        }
+                    }
+
+                    // If the table has less than 10 rows, it's probably
+                    // not the signup table we're looking for
+                    if (rows.length < 10) {
+                        return result;
+                    }
+
+                    // Adds the <tr> we found to the end result
+                    return result.concat(rows);
+                }, []);
+
+                slots = rowElements.reduce((result, rowElement) => {
+                    // Excludes everything but <th> and <td>
+                    const cellElements = rowElement.childNodes.filter((node) => {
+                        if (! node.hasOwnProperty('tagName')) {
+                            return false;
+                        }
+                        return node.nodeName === 'th' || node.nodeName === 'td';
+                    }).map((cellElement) => {
+                        const textNode = findTextNode(cellElement);
+                        return (textNode !== null) ? textNode.value : null;
+                    });
+
+                    // We should have at least 2 cells (Role + IGN)
+                    if (cellElements.length < 2) {
+                        return result;
+                    }
+                    // Makes sure we have actual data in our cells
+                    // No null, no '---' and the like
+                    if (cellElements[0] === null
+                        || cellElements[0].indexOf('-') === 0
+                        || cellElements[1] === null
+                        || cellElements[1].indexOf('-') === 0
+                    ) {
+                        return result;
+                    }
+
+                    result.push([
+                        cellElements[0],
+                        cellElements[1],
+                    ]);
+
+                    return result;
+                }, []);
+            }
+
+            for (const [role, player] of slots) {
+                // Tries to find the player's matching User
+                /** @type {User} user */
+                const user = this._data.users.find((user) => user.aliasesIncludes(player));
+
+                // If we couldn't find it, adds the player name into our unknown list
+                if (! user) {
+                    if (! this._data.unknownPlayers.includes(player)) {
+                        this._data.unknownPlayers.push(player);
+                    }
+                    continue;
+                }
+
+                user.signupCount++;
+            }
+        }
+
+        return processedSubmissionCount;
+    }
+
+    /**
      * Returns collected data
      *
      * @return {Object}
@@ -176,6 +349,7 @@ class Crawler {
 
         this._data.processedAARIds = json.processedAARCommentIds;
         this._data.excludedRedditIds = json.excludedRedditIds;
+        this._data.unknownPlayers = json.unknownPlayers;
         this._data.users = json.users.map((userData) => {
             return User.createFromJson(userData);
         });
@@ -192,6 +366,7 @@ class Crawler {
         const json = {
             processedAARCommentIds: this.getData().processedAARCommentIds,
             excludedRedditIds: this.getData().excludedRedditIds,
+            unknownPlayers: this.getData().unknownPlayers,
             users: this.getData().users.map(user => user.toJSON()),
         };
 

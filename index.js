@@ -68,6 +68,22 @@ else if (action === 'sort-aar') {
     console.log(`Sorted ${users.length} users.`);
     process.exit(0);
 }
+else if (action === 'signup') {
+    const timeframe = (process.argv.length > 3)
+        ? process.argv[3]
+        : 'all';
+
+    console.log('Processing signups…');
+    crawler.loadData().then(() => {
+        return crawler.processSignups(timeframe);
+    }).then((processedCount) => {
+        console.log(`Processed: ${processedCount}`);
+        return crawler.saveData();
+    }).then(() => {
+        console.log('OK');
+        process.exit(0);
+    });
+}
 else {
     console.log(`${action} is not implemented.`);
     process.exit(2);

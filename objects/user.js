@@ -15,8 +15,14 @@ class User {
     /** @type {String} */
     discordId;
 
+    /** @type {String[]} */
+    aliases = [];
+
     /** @type {Number} */
     aarCount = 0;
+
+    /** @type {Number} */
+    signupCount = 0;
 
     /**
      * @param {String} redditId
@@ -54,11 +60,30 @@ class User {
         if (json.hasOwnProperty('discordId')) {
             user.discordId = json.discordId;
         }
+        if (json.hasOwnProperty('aliases')) {
+            user.aliases = json.aliases;
+        }
         if (json.hasOwnProperty('aarCount')) {
             user.aarCount = json.aarCount;
         }
+        if (json.hasOwnProperty('signupCount')) {
+            user.signupCount = json.signupCount;
+        }
 
         return user;
+    }
+
+    /**
+     * Returns true if query is included in the user's aliases, and false otherwise.
+     *
+     * @param {String} query
+     * @return {boolean}
+     */
+    aliasesIncludes(query) {
+        const alias = this.aliases.find((alias) => {
+            return query.trim().toLowerCase().includes(alias.trim().toLowerCase());
+        });
+        return alias !== undefined;
     }
 
     /**
@@ -81,7 +106,9 @@ class User {
         return {
             discordId: this.discordId || '',
             redditId: this.redditId || '',
+            aliases: this.aliases,
             aarCount: this.aarCount,
+            signupCount: this.signupCount,
         };
     }
 }

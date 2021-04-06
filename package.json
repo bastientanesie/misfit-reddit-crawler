@@ -6,12 +6,14 @@
   "scripts": {
     "aar": "node index.js -aar",
     "sort-aar": "node index.js -sort-aar",
+    "signup": "node index.js -signup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bastien Tanésie",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "parse5": "^6.0.1",
     "snoowrap": "^1.22.0"
   }
 }
