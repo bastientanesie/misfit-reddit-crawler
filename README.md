@@ -8,7 +8,7 @@ Copy the config files and edit them as you see fit:
 
 ```shell
 cp .env.dist .env
-cp discord-mapping.json.dist discord-mapping.json
+cp data.json.dist data.json
 ```
 
 Install dependencies:
@@ -25,23 +25,57 @@ Collect AARs data to `data.json` (defaults to all):
 npm run aar [hour|day|week|month|year|all]
 ```
 
+Collect signups data to `data.json` (defaults to all):
+
+```shell
+npm run signup [hour|day|week|month|year|all]
+```
+
 To sort AARs data once collected:
 
 ```shell
 npm run sort-aar
 ```
 
-## Discord-Reddit mapping
+## Data mapping
 
-The `discord-mapping.json` file is used to map Reddit usernames to Discord accounts. For instance:
+The `data.json` file is used to map player data between Reddit, Discord and signup sheets.
+
+### `users`
+
+This is the main piece of data used by these scripts. Here's an example:
 
 ```json
 {
-    "NamSualk": "Klausman"
+    "discordId": "Spamduck#8486",
+    "redditId": "The_Spamduck",
+    "aliases": [
+        "Spamduck",
+        "Spam",
+        "Duck",
+        "Blanketduck",
+        "Canard"
+    ],
+    "aarCount": 0,
+    "signupCount": 0
 }
 ```
 
-The _key_ `NamSualk` is the Reddit username, while the _value_ `Klausman` is the Discord account. One line per account.
+The `aliases` list contains variation of the player's name used in signup sheets.  
+Because (for some unknown reasons) people like to write nicknames differently sometimes! ¯\_(ツ)_/¯
+
+### `unknownPlayers`
+
+This is the list of player names found in signup sheets that aren't associated to any "User" in the `data.json` file.
+
+### `excludedRedditIds`
+
+This is a list of Reddit username that will be ignored by the scripts.  
+For instance, the user `[deleted]` is the fallback account for deleted Reddit accounts, so we don't want to take it into account.
+
+### `processedAARCommentIds`
+
+This contains IDs of Reddit comments already processed for AARs, in order to not count them twice.
 
 ## Reddit app registration
 
