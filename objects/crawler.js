@@ -2,7 +2,8 @@
 
 const snoowrap = require('snoowrap');
 const fs = require('fs');
-const packageJson = require('../package.json');
+const path = require('path');
+const packageJson = require(path.join(__dirname, '..', 'package.json'));
 const User = require('./user');
 
 class Crawler {
@@ -39,7 +40,7 @@ class Crawler {
          * @type {String}
          * @private
          */
-        this._filepath = `${__dirname}/../data.json`;
+        this._filepath = path.join(__dirname, '..', 'data.json');
 
         /**
          * API instance associated to MC's subreddit
@@ -50,14 +51,16 @@ class Crawler {
 
         /**
          *
-         * @type {{processedAARIds: String[], users: {}}}
+         * @type {{processedAARCommentIds: String[], excludedRedditIds: String[], users: User[]}}
          * @private
          */
         this._data = {
             /** IDs of AAR comments that have been processed */
             processedAARCommentIds: [],
+            /** Reddit usernames excluded from our data */
+            excludedRedditIds: [],
             /** User objects with their stats */
-            users: new Map(),
+            users: [],
         };
     }
 
@@ -110,7 +113,11 @@ class Crawler {
 
             for (const comment of comments) {
                 // Skips mission maker's comments
-                if (comment.author_fullname === submission.author_fullname) {
+                if (comment.author.name === submission.author.name) {
+                    continue;
+                }
+                // Checks if it's an excluded reddit username
+                if (this._data.excludedRedditIds.includes(comment.author.name)) {
                     continue;
                 }
                 // Checks if we've already processed that comment
@@ -119,15 +126,15 @@ class Crawler {
                 }
 
                 // Creates this user's object if it doesn't already exist
-                if ( ! this._data.users.has(comment.author_fullname)) {
-                    this._data.users.set(
-                        comment.author_fullname,
-                        new User(comment.author.name)
-                    );
+                let user = this._data.users.find((user) => {
+                    return user.redditId === comment.author.name;
+                });
+                if (! user) {
+                    user = User.createFromReddit(comment.author.name);
                 }
 
                 // Increment this user's AAR counter
-                this._data.users.get(comment.author_fullname).incrementAARCount();
+                user.aarCount++;
 
                 // Store this comment ID so we don't process it multiple times
                 this._data.processedAARCommentIds.push(comment.id);
@@ -151,17 +158,42 @@ class Crawler {
      *
      * @return {Promise<void>}
      */
+    async loadData() {
+        let json;
+        try {
+            await this._checkFilepath(this._filepath);
+            const data = fs.readFileSync(this._filepath);
+
+            json = JSON.parse(data.toString());
+        } catch (error) {
+            console.error(`Failed to load data from "${this._filepath}"`);
+            this._debug(error);
+        }
+
+        if (! json) {
+            return;
+        }
+
+        this._data.processedAARIds = json.processedAARCommentIds;
+        this._data.excludedRedditIds = json.excludedRedditIds;
+        this._data.users = json.users.map((userData) => {
+            return User.createFromJson(userData);
+        });
+    }
+
+    /**
+     * Persists collected data inside a JSON file
+     *
+     * @return {Promise<void>}
+     */
     async saveData() {
         await this._checkFilepath(this._filepath);
 
         const json = {
             processedAARCommentIds: this.getData().processedAARCommentIds,
-            users: [],
+            excludedRedditIds: this.getData().excludedRedditIds,
+            users: this.getData().users.map(user => user.toJSON()),
         };
-
-        for (const [key, user] of this.getData().users) {
-            json.users.push(user.toJSON(key));
-        }
 
         fs.writeFileSync(
             this._filepath,
@@ -224,7 +256,7 @@ class Crawler {
             return;
         }
 
-        console.log(data);
+        console.log(...arguments);
     }
 }
 

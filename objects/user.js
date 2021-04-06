@@ -1,66 +1,87 @@
 'use strict';
 
-const discordMapping = require('../discord-mapping.json') || {};
+let userMapping = [];
+try {
+    const path = require('path');
+    userMapping = require(path.join(__dirname, '..', 'data.json')).users;
+} catch (error) {
+    // console.error(error);
+}
 
 class User {
-    /**
-     * @param {String} name
-     */
-    constructor(name) {
-        /**
-         * @type {String}
-         * @private
-         */
-        this._name = name;
+    /** @type {String} */
+    redditId;
 
-        // Lookup the name inside our reddit-discord mapping
-        if (discordMapping.hasOwnProperty(name)) {
-            this._name = discordMapping[name];
+    /** @type {String} */
+    discordId;
+
+    /** @type {Number} */
+    aarCount = 0;
+
+    /**
+     * @param {String} redditId
+     * @return {User}
+     */
+    static createFromReddit(redditId) {
+        const userData = userMapping.find((user) => {
+            if (! user.hasOwnProperty('redditId')) {
+                return false;
+            }
+
+            return user.redditId.trim().toLowerCase() === redditId.trim().toLowerCase();
+        });
+
+        if (userData) {
+            return this.createFromJson(userData);
         }
 
-        /**
-         * @type {Number}
-         * @private
-         */
-        this._aarCount = 0;
+        const user = new this();
+        user.redditId = redditId;
+
+        return user;
     }
 
     /**
-     * @return {String}
+     * @param {Object} json
+     * @return {User}
      */
-    getName() {
-        return this._name;
-    }
+    static createFromJson(json) {
+        const user = new this();
 
-    /**
-     * @return {Number}
-     */
-    getAARCount() {
-        return this._aarCount;
-    }
+        if (json.hasOwnProperty('redditId')) {
+            user.redditId = json.redditId;
+        }
+        if (json.hasOwnProperty('discordId')) {
+            user.discordId = json.discordId;
+        }
+        if (json.hasOwnProperty('aarCount')) {
+            user.aarCount = json.aarCount;
+        }
 
-    /**
-     *
-     */
-    incrementAARCount() {
-        ++this._aarCount;
+        return user;
     }
 
     /**
      * @return {String}
      */
     toString() {
-        return this.getName();
+        if (this.redditId) {
+            return this.redditId;
+        }
+        else if (this.discordId) {
+            return this.discordId;
+        }
+        return 'Unknown';
     }
 
     /**
      * @return {Object}
      */
-    toJSON(key) {
+    toJSON() {
         return {
-            id: key,
-            name: this.getName(),
-            aarCount: this.getAARCount(),
+            discordId: this.discordId || '',
+            redditId: this.redditId || '',
+            aarCount: this.aarCount,
         };
     }
 }

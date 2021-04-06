@@ -25,8 +25,10 @@ if (action === 'aar') {
         : 'all';
 
     console.log('Processing AARs…');
-    crawler.processAARActivity(timeframe).then((aarCount) => {
-        console.log(`Processed: ${aarCount}`);
+    crawler.loadData().then(() => {
+        return crawler.processAARActivity(timeframe);
+    }).then((processedCount) => {
+        console.log(`Processed: ${processedCount}`);
         return crawler.saveData();
     }).then(() => {
         console.log('OK');
@@ -48,15 +50,19 @@ else if (action === 'sort-aar') {
 
     // Sorts by AAR count, then by name
     users.sort((a, b) => {
-        const diff = b.aarCount - a.aarCount;
+        const diff = b.signupCount - a.signupCount;
         if (diff !== 0) {
             return diff;
         }
-        return a.name.localeCompare(b.name);
+        return a.redditId.localeCompare(b.redditId);
     });
 
     for (const user of users) {
-        console.log(`${user.name}: ${user.aarCount}`);
+        if (user.aliases.length > 0) {
+            console.log(`${user.aliases[0]}: ${user.signupCount}`);
+        } else {
+            console.log(`${user.redditId}: ${user.signupCount}`);
+        }
     }
 
     console.log(`Sorted ${users.length} users.`);
